@@ -17,16 +17,25 @@
 # limitations under the License.
 #
 
-include_recipe 'mysql'
+template 'mysql.seed' do
+  source 'mysql.preseed.erb'
+  path node[:temp_dir]+'/mysql.seed'
+  variables({
+                :admin_password => node[:admin_password]
+            })
+  mode '0755'
+  owner 'root'
+  group 'root'
+end
 
-mysql_service 'default' do
-  version '5.6'
-  port '3307'
-  data_dir '/data'
-  allow_remote_root true
-  root_network_acl ['192.168.33.11']
-  remove_anonymous_users false
-  remove_test_database false
-  server_root_password 'mysql'
-  action :create
+execute 'Set MySQL Preseed Selections' do
+  command 'debconf-set-selections ' + node[:temp_dir] + '/mysql.seed'
+end
+
+execute 'apt-get update' do
+  command 'sudo apt-get update'
+end
+
+apt_package 'mysql-server' do
+  action :install
 end
