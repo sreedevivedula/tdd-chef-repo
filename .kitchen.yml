@@ -5,12 +5,17 @@ driver:
 provisioner:
   name: chef_solo
 
+
 platforms:
   - name: ubuntu-12.04
+    driver:
+      box: ubuntu12.0.4
   - name: centos-6.4
+    driver:
+      box: centos64
+
 
 suites:
   - name: default
-    run_list:
-      - recipe[mysql_cookbook::default]
+    run_list: recipe[mysql::install]
     attributes:

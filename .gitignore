@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 .chef
+.kitchen/
+.kitchen.local.yml
