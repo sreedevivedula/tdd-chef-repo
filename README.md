@@ -43,4 +43,10 @@ kitchen verify ( This command should result in test success )
 
 rspec spec ( This command should run the ChefSpec tests successfully )
 
-* After checking out *stage5-deploy-on-nodes*, upload the cookbook code into chef-repo and deploy it on nodes.
+* After checking out *stage5-deploy-on-nodes*, deploy cookbook on the Chef nodes
+
+copy the mysql cookbook into your Chef Workstations's and upload to Chef Server
+add mysql cookbook to the nodes' run-lists
+run chef-client on the ndoes (chef-client should run successfully)
+
+
