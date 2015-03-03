@@ -36,14 +36,11 @@ kitchen verify ( This command should result in test failures )
 
 * After checking out *stage3-add-infra-code*, use the below commands to check the state.
 
+kitchen converge ( This command should run the mysql cookbook on the instances )
 kitchen verify ( This command should result in test success )
 
+* After checking out *stage4-add-unit-tests*, use the below commands to run unit tests.
+
+rspec spec ( This command should run the ChefSpec tests successfully )
+
 * After checking out *stage5-deploy-on-nodes*, upload the cookbook code into chef-repo and deploy it on nodes.
-
-
-
-
-
-
-
-
